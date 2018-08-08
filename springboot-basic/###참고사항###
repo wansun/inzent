@@ -1,0 +1,31 @@
+********** 참고사항 **********
+-----------------------------------------------------------------------------------------------------------------
+현재 로그인 로그아웃 기능만 구현되어있음.
+포트정보, db연결정보, view resolver 등 셋팅은 src/main/resources 폴더 아래 application.properties 에 되어있음.
+pom.xml 디펜던시 3가지 추가 되어있음.
+웹화면 jsp는 src/main/webapp/WEB-INF/include/lnclude.jsp , index.jsp는 단순하게 웹페이지 포함시키는 jsp
+
+--------------------------------------------------웹 실행---------------------------------------------------------
+1. src/main/java 폴더 아래 com.demo 패키지에 있는 SpringbootBasicApplication 클래스에서
+    마우스 오른쪽 누른 후 Run as 항목에서 Spring boot app 실행한다.
+2. 정상적으로 작동이 되면 아래 콘솔창에 이상한 특수기호로 스프링이라 써지고 
+   :: Spring Boot ::        (v2.0.4.RELEASE)  <- 이런 글자가 나타남
+3. 크롬 켠 후 localhost:8888/   주소 입력하면 웹이 실행된다 (현재 설정한값 기준)
+
+
+
+--------------------------------------------------쿼리 관련---------------------------------------------------------
+VO에 맞게 테스트 테이블 생성 예제
+
+CREATE TABLE TEST(
+	ID VARCHAR2(100) PRIMARY KEY,
+	PASSWORD VARCHAR2(100) NOT NULL,
+	NAME VARCHAR2(100) NOT NULL,
+	ADDRESS VARCHAR2(100) NOT NULL,
+	EMAIL VARCHAR2(100) NOT NULL
+);
+
+사용자 추가
+
+INSERT INTO TEST(ID,PASSWORD,NAME,ADDRESS,EMAIL) VALUES('test','1','테스트2','영광','2@2.COM');
+

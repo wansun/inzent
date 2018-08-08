@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://www.springframework.org/tags"%>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <!--
 	Prologue by HTML5 UP
@@ -25,11 +25,23 @@
 						<div id="logo">
 							<!-- <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span> -->
 							<div align="right">
-							<form action="login.do">
-								<input type="text" name="id" placeholder="    아이디">
-								<input type="text" name="password" placeholder="    패스워드">
-								<button type="submit">로그인</button>
-							</form>
+							<c:choose>
+								<c:when test="${sessionScope.mvo==null}">
+									<form action="${pageContext.request.contextPath}/login.do" method="post">
+										<input type="text" name="id" placeholder="    아이디">
+										<input type="text" name="password" placeholder="    패스워드">
+										<button type="submit">로그인</button>
+									</form>
+								</c:when>
+								<c:otherwise>
+									<form action="${pageContext.request.contextPath}/logout.do">
+										<div>
+											${sessionScope.mvo.name} 님 로그인
+										</div>
+										<button type="submit">로그아웃</button>
+									</form>
+								</c:otherwise>
+							</c:choose>
 							</div>
 						</div>
 
